@@ -1,11 +1,7 @@
 import express from "express";
-import { home } from "../controllers/videoController";
+import { home } from "../controllers/videoController.js";
 
 const rootRouter = express.Router();
-
-export const home = (req, res) => {
-  return res.send("Please");
-};
 
 rootRouter.get("/", home);
 

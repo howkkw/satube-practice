@@ -1,9 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 
-import rootRouter from "./routers/rootRouter";
-import videoRouter from "./routers/videoRouter";
-import userRouter from "./routers/userRouter";
+import rootRouter from "./routers/rootRouter.js";
+import videoRouter from "./routers/videoRouter.js";
+import userRouter from "./routers/userRouter.js";
 
 const PORT = 5000;
 

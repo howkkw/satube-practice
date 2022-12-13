@@ -19,7 +19,9 @@
   "dependencies": {
     "babel-node": "^0.0.1-security",
     "express": "^4.18.2",
-    "morgan": "^1.10.0"
+    "mongoose": "^6.8.0",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",

@@ -10,8 +10,8 @@ app.set("view engine", "pug");
 app.set("views", "src/views");
 const logger = morgan("dev");
 
-app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use(logger);
 
 app.use("/", rootRouter);
 app.use("/users", userRouter);

@@ -1,8 +1,10 @@
 extends base
 
 block content
+    if errorMessage
+        span=errorMessage
     form(method="POST")
-        input(type="text", required, name="title", placeholder="제목을 입력해주세요")
-        input(type="text", required, name="description", placeholder="동영상에 대한 설명")
+        input(type="text", required, name="title", placeholder="제목을 입력해주세요", maxlength="15")
+        input(type="text", required, name="description", placeholder="동영상에 대한 설명", minlength="3")
         input(type="text", required, name="hashtags", placeholder="해쉬태그(쉼표로 구분하셔도 자동으로 됩니다~)")
         input(type="submit", required, value="Upload Video")

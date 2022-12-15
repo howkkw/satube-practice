@@ -1,0 +1,8 @@
+extends base
+
+block content
+    form(method="POST")
+        input(type="text", required, name="title", value=video.title, maxlength="15")
+        input(type="text", required, name="description", value=video.description, minlength="3")
+        input(type="text", required, name="hashtags", value=video.hashtags.join())
+        input(type="submit", required, value="Edit Video")

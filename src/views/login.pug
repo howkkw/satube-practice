@@ -1,7 +1,14 @@
 extends base
 
 block content
+    if errorMessage
+        span(style="color:red")=errorMessage
     form(method="POST")
         input(type="text", required, name="username", placeholder="username")
         input(type="password", required, name="password", placeholder="password")
         input(type="submit", value="Login")
+    hr
+    a(href="/users/github/start") Account with Github
+    div
+        span 계정이 없으신가요?
+        a(href="/join") Create now &rarr;

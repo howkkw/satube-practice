@@ -16,18 +16,18 @@ app.set("views", "src/views");
 
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+
 app.use(
   session({
-    secret: process.env.COOKIE_SECRET,
+    secret: process.env.COOKIE_SERCET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.DB_URL,
-    }),
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
 
 app.use(localsMiddleware);
+app.use("/uploads", express.static("uploads"));
 
 app.use("/", rootRouter);
 app.use("/users", userRouter);

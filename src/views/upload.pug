@@ -3,7 +3,9 @@ extends base
 block content
     if errorMessage
         span=errorMessage
-    form(method="POST")
+    form(method="POST", enctype="multipart/form-data")
+        label(for="video") Video file
+        input(type="file", id="video", name="video", accept="video/*") 
         input(type="text", required, name="title", placeholder="제목을 입력해주세요", maxlength="15")
         input(type="text", required, name="description", placeholder="동영상에 대한 설명", minlength="3")
         input(type="text", required, name="hashtags", placeholder="해쉬태그(쉼표로 구분하셔도 자동으로 됩니다~)")

@@ -1,3 +1,4 @@
+import User from "../model/User.js";
 import Video from "../model/Video.js";
 
 export const home = async (req, res) => {
@@ -30,6 +31,7 @@ export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload" });
 };
 export const postUpload = async (req, res) => {
+  const { path: fileUrl } = req.file;
   const {
     body: { title, description, hashtags },
   } = req;
@@ -37,12 +39,14 @@ export const postUpload = async (req, res) => {
     const video = await Video.create({
       title,
       description,
+      fileUrl,
       hashtags: Video.formatHashtags(hashtags),
     });
     return res.status(202).redirect("/");
   } catch (error) {
-    return res.status(404).render("upload", {
-      pageTitle: "Upload",
+    console.log(error);
+    return res.status(400).render("upload", {
+      pageTitle: "Upload Video",
       errorMessage: error._message,
     });
   }
@@ -78,4 +82,12 @@ export const videoDelete = async (req, res) => {
   const { id } = req.params;
   await Video.findByIdAndDelete(id);
   return res.redirect("/");
+};
+
+export const myProfile = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if (!user) {
+    return res.status(400).render("404", { pageTitle: "User not found." });
+  }
 };

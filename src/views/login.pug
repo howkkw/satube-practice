@@ -7,8 +7,7 @@ block content
         input(type="text", required, name="username", placeholder="username")
         input(type="password", required, name="password", placeholder="password")
         input(type="submit", value="Login")
-    hr
-    a(href="/users/github/start") Account with Github
-    div
+        include partial/social-login
+    div.auth-switch
         span 계정이 없으신가요?
         a(href="/join") Create now &rarr;

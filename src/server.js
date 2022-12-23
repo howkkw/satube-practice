@@ -2,11 +2,13 @@ import "dotenv/config";
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import flash from "express-flash";
 
 import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter.js";
 import videoRouter from "./routers/videoRouter.js";
 import userRouter from "./routers/userRouter.js";
+import apiRouter from "./routers/apiRouter.js";
 import { localsMiddleware } from "./middlewares.js";
 
 const app = express();
@@ -26,11 +28,14 @@ app.use(
   })
 );
 
-app.use(localsMiddleware);
+app.use(flash());
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("assets"));
+app.use(localsMiddleware);
 
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
+app.use("/api", apiRouter);
 
 export default app;

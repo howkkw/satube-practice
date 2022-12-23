@@ -7,8 +7,9 @@ import {
   finishLoginGithub,
   getChangePassword,
   postChangePassword,
+  myProfile,
 } from "../controllers/userController.js";
-import { myProfile } from "../controllers/videoController.js";
+
 import {
   protectorMiddleware,
   publicMiddleware,
